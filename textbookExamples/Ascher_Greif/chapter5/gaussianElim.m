@@ -1,12 +1,16 @@
-%% An Octave function that implements Gaussian Elimination 
+%% An Octave function that implements Gaussian Elimination
 %% Returns modified A, b, and l (for the sake of LU decomposition)
 function [A, b, l, u] = gaussianElim(A, b)
     n = size(b)(1);
     l = eye(n);
     for k = 1:1:n-1
+      printf("Akk = %d \n", A(k,k))
         for i = k+1:1:n
-            l(i,k) = A(i,k) / A(k,k);
-            for j = k+1:1:n
+
+          l(i,k) = A(i,k) / A(k,k);
+            printf("a = %d l = %d \n",A(i,k), l(i,k));
+
+          for j = k:1:n
                 A(i, j) = A(i, j) - l(i, k) * A(k, j);
             end
             b(i) = b(i) - l(i, k) * b(k);
